@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class RockController : MonoBehaviour
 {
+    public bool isMoving;
     public Transform player;
     NavMeshAgent agent;
     private Rigidbody rigidbody;
@@ -13,6 +14,7 @@ public class RockController : MonoBehaviour
 
     void Start()
     {
+        isMoving = false;
         agent = GetComponent<NavMeshAgent>();
         rigidbody = GetComponent<Rigidbody>();
     }
@@ -21,7 +23,7 @@ public class RockController : MonoBehaviour
     {
         float distance = Vector3.Distance(agent.transform.position, player.position);
 
-        if (distance < 8f)
+        if (isMoving)
         {
             agent.isStopped = false;
             agent.transform.LookAt(player);
@@ -30,8 +32,11 @@ public class RockController : MonoBehaviour
             agent.isStopped = true;
             agent.SetDestination(agent.transform.position);
         }
+    }
 
-
+    public void SetIsMoving(bool moving)
+    {
+        isMoving = moving;
     }
 
 
