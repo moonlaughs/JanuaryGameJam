@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-
-
-    // Start is called before the first frame update
-    void Start()
+    bool KeyCard = false;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.gameObject.tag == "KeyCard")
+        {
+            KeyCard = true;
+            Destroy(gameObject);
+        }
     }
 }
