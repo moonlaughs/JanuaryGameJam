@@ -21,10 +21,10 @@ TagManager:
   - Water
   - UI
   - Sample
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Non-Ground
+  - Player
+  - Enemy
   - 
   - 
   - 
