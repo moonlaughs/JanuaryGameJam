@@ -11,6 +11,10 @@ public class Shooting : MonoBehaviour
     [SerializeField] float bulletLifeTime;
     [SerializeField] float ammoCount;
     [SerializeField] float maxAmmo;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip shootClip;
+    [SerializeField] AudioClip emptyClip;
+
 
     private void Start()
     {
@@ -22,16 +26,13 @@ public class Shooting : MonoBehaviour
         {
             Fire();
         }
-        else 
-        {
-            //audio
-        }
     }
 
     void Fire()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            audioSource.PlayOneShot(shootClip);
             GameObject instance = Instantiate(bullet, gunBarrel.position, Quaternion.identity);
             Rigidbody rb = instance.GetComponent<Rigidbody>();
             if (rb != null)
